@@ -1061,6 +1061,7 @@ navigationController = {
     getFocusableElements : function() {
         var items = document.body.querySelectorAll(navigationController.querySelector)
         var length = items.length;
+
         // Determine bounding rects and populate list
         var boundingRects = [];
         for ( var i = 0; i < length; i++) {
