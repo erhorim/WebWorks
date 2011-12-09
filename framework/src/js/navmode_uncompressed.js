@@ -560,8 +560,9 @@ navigationController = {
 	
     // Support function for scrolling right
     handleDirectionRight : function() {
-        var currentNode = navigationController.currentFocused.element; 
-        if (navigationController.isRangeControl(currentNode) && navigationController.rangeNavigationOn) {
+        if (navigationController.currentFocused != null &&
+                navigationController.isRangeControl(navigationController.currentFocused.element) &&
+                navigationController.rangeNavigationOn) {
             navigationController.handleRangeSliderMovement('r');
         } else { //we are not on a range control in navigation mode
             var screenRect = navigationController.getUnscaledScreenRect();
@@ -594,8 +595,9 @@ navigationController = {
 
     /* Support function for scrolling left */
     handleDirectionLeft : function() {
-        var currentNode = navigationController.currentFocused.element; 
-        if (navigationController.isRangeControl(currentNode) && navigationController.rangeNavigationOn) {
+        if (navigationController.currentFocused != null && 
+                navigationController.isRangeControl(navigationController.currentFocused.element) &&
+                navigationController.rangeNavigationOn) {
             navigationController.handleRangeSliderMovement('l');
         } else { //we are not on a range control in navigation mode
             var screenRect = navigationController.getUnscaledScreenRect();
@@ -1435,7 +1437,7 @@ navigationController = {
     },
 
     scrollX : function(value) {
-        window.scrollTo(value, window.pageYOffset);
+        window.scrollTo(navigationController.unscaleValue(value), window.pageYOffset);
 
         // Below is some experimental smooth scrolling code
         /*var startX = 0;
@@ -1465,7 +1467,7 @@ navigationController = {
     },
 
     scrollY : function(value) {
-        window.scrollTo(window.pageXOffset, value);
+        window.scrollTo(window.pageXOffset, navigationController.unscaleValue(value));
 
         // Below is some experimental smooth scrolling code
         /*var startY = 0;
