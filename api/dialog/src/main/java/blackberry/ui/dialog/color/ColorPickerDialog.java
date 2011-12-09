@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blackberry.ui.dialog.nav.color;
+package blackberry.ui.dialog.color;
 
-import blackberry.ui.dialog.nav.IWebWorksDialog;
+import blackberry.ui.dialog.IWebWorksDialog;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.Characters;
 import net.rim.device.api.system.KeypadListener;

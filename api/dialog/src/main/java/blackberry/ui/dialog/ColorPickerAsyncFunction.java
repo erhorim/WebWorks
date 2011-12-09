@@ -20,7 +20,7 @@ import net.rim.device.api.script.ScriptableFunction;
 import net.rim.device.api.ui.UiApplication;
 import blackberry.core.FunctionSignature;
 import blackberry.core.ScriptableFunctionBase;
-import blackberry.ui.dialog.nav.DialogRunnableFactory;
+import blackberry.ui.dialog.DialogRunnableFactory;
 
 /**
  * Implementation of asynchronous color picker dialog

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blackberry.ui.dialog.nav.select;
+package blackberry.ui.dialog.select;
 
 import java.util.Vector;
 
@@ -37,7 +37,7 @@ import net.rim.device.api.ui.container.PopupScreen;
 import net.rim.device.api.ui.container.VerticalFieldManager;
 
 import blackberry.ui.dialog.SelectAsyncFunction;
-import blackberry.ui.dialog.nav.IWebWorksDialog;
+import blackberry.ui.dialog.IWebWorksDialog;
 
 /**
  * Implementation of selection dialog

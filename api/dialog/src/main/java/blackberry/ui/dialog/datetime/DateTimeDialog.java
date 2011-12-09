@@ -14,7 +14,7 @@
  * limitations under the License.
  */
  
-package blackberry.ui.dialog.nav.datetime;
+package blackberry.ui.dialog.datetime;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -22,7 +22,7 @@ import java.util.Date;
 import net.rim.device.api.i18n.SimpleDateFormat;
 import net.rim.device.api.ui.picker.DateTimePicker;
 
-import blackberry.ui.dialog.nav.IWebWorksDialog;
+import blackberry.ui.dialog.IWebWorksDialog;
 
 public class DateTimeDialog implements IWebWorksDialog {
 

@@ -1,11 +1,20 @@
 /*
- * DialogRunnableFactory.java
- *
- * Research In Motion Limited proprietary and confidential
- * Copyright Research In Motion Limited, 2011-2011
- */
+* Copyright 2010-2011 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
-package blackberry.ui.dialog.nav;
+package blackberry.ui.dialog;
 
 import java.util.Vector;
 
@@ -13,10 +22,10 @@ import net.rim.device.api.system.DeviceInfo;
 import net.rim.device.api.script.ScriptableFunction;
 import net.rim.device.api.script.ScriptableImpl;
 
-import blackberry.ui.dialog.nav.datetime.DateTimeDialog;
-import blackberry.ui.dialog.nav.IWebWorksDialog;
-import blackberry.ui.dialog.nav.select.SelectDialog;
-import blackberry.ui.dialog.nav.color.ColorPickerDialog;
+import blackberry.ui.dialog.datetime.DateTimeDialog;
+import blackberry.ui.dialog.IWebWorksDialog;
+import blackberry.ui.dialog.select.SelectDialog;
+import blackberry.ui.dialog.color.ColorPickerDialog;
 
 public class DialogRunnableFactory {
     

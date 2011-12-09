@@ -23,8 +23,8 @@ import blackberry.common.util.json4j.JSONArray;
 import blackberry.core.FunctionSignature;
 import blackberry.core.ScriptableFunctionBase;
 
-import blackberry.ui.dialog.nav.DialogRunnableFactory;
-import blackberry.ui.dialog.nav.select.SelectDialog;
+import blackberry.ui.dialog.DialogRunnableFactory;
+import blackberry.ui.dialog.select.SelectDialog;
 
 /**
  * Implementation of asynchronous selection dialog
