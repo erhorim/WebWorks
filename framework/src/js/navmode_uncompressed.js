@@ -217,20 +217,29 @@ navigationController = {
             navigationController.focusableNodes = navigationController.getFocusableElements();
             navigationController.domDirty = false;
         }
-        
-        // Determine if browser handled the the event by checking the caret position
-        // If browser handled the event, just return 
+
+        // Logic to handle cursor movement in scrollable controls (e.g. text input and textarea),
+        // Only handle scrolling with cursor is at the beginning or end position
         if (navigationController.currentFocused) {
             var element = navigationController.currentFocused.element;
             if (navigationController.isScrollableElement(element)) {
                 var caretPos = element.selectionStart;
-                if (caretPos != navigationController.lastCaretPosition) {
-                    navigationController.lastCaretPosition = caretPos;
-                    return;
+                if (navigationController.currentDirection == navigationController.RIGHT ||
+                    navigationController.currentDirection == navigationController.DOWN) {
+                    if (navigationController.lastCaretPosition < element.value.length-1) {
+                        navigationController.lastCaretPosition = caretPos;
+                        return;
+                    }
+                } else if (navigationController.currentDirection == navigationController.LEFT ||
+                    navigationController.currentDirection == navigationController.UP) {
+                    if (navigationController.lastCaretPosition > 0) {
+                        navigationController.lastCaretPosition = caretPos;
+                        return;
+                    }
                 }
             }
         }
-
+        
         // Determine our direction and scroll
         if (navigationController.currentDirection === navigationController.DOWN) {
             if (navigationController.currentFocused
@@ -1075,6 +1084,10 @@ navigationController = {
                         navigationController.currentFocused = navigationController.focusableNodes[i];
                         element = navigationController.currentFocused.element;
                         if (navigationController.isScrollableElement(element)) {
+                            // this is to workaround the issue where input is selected on the first time
+                            if (element.tagName == 'INPUT') {
+                                element.value = element.value;
+                            }
                             navigationController.lastCaretPosition = element.selectionStart;
                         }
                     }
