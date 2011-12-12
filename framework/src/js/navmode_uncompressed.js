@@ -1370,10 +1370,6 @@ navigationController = {
                             navigationController.virtualHeight - navigationController.height);
         }
 
-        if (newVerticalScroll - verticalScroll != 0) {
-            navigationController.scrollY(newVerticalScroll);
-        }
-
         // Check horizontal scroll.
         var horizontalScroll = navigationController.horizontalScroll;
         var newHorizontalScroll = horizontalScroll;
@@ -1387,8 +1383,9 @@ navigationController = {
                     /*+ navigationController.scaleValue(navigationController.SAFE_MARGIN)*/,
                     navigationController.virtualWidth - navigationController.width);
         }
-        if (newHorizontalScroll - horizontalScroll != 0) {
-            navigationController.scrollX(newHorizontalScroll);
+        
+        if (newHorizontalScroll != horizontalScroll || newVerticalScroll != verticalScroll) {
+            navigationController.scrollXY(newHorizontalScroll, newVerticalScroll);
         }
     },
 
@@ -1409,13 +1406,13 @@ navigationController = {
         var newHorizontalScroll = Math.min(navigationController.horizontalScroll
                 + navigationController.scaleValue(navigationController.SAFE_MARGIN), navigationController.virtualWidth
                 - navigationController.width);
-        navigationController.scrollX(newHorizontalScroll);
+        navigationController.scrollXY(newHorizontalScroll, navigationController.verticalScroll);
     },
 
     scrollLeft : function() {
         var newHorizontalScroll = Math.max(navigationController.horizontalScroll
                 - navigationController.scaleValue(navigationController.SAFE_MARGIN), 0);
-        navigationController.scrollX(newHorizontalScroll);
+        navigationController.scrollXY(newHorizontalScroll, navigationController.verticalScroll);
     },
 
     scaleRect : function(rect) {
@@ -1446,6 +1443,10 @@ navigationController = {
         };
 
         return newRect;
+    },
+
+    scrollXY : function(x, y) {
+        window.scrollTo(navigationController.unscaleValue(x), navigationController.unscaleValue(y));
     },
 
     scrollX : function(value) {
