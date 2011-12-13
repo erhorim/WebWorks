@@ -21,7 +21,7 @@ navigationController = {
     AUTO_FOCUS_INPUT_TYPES : '|color|date|month|time|week|email|number|password|search|text|url|tel|',
     SCROLLABLE_INPUT_TYPES : '|text|password|email|search|tel|number|url|',
     REQUIRE_CLICK_INPUT_TYPES : '|file|',
-    querySelector : 'textarea:not([x-blackberry-focusable=false]),a:not([x-blackberry-focusable=false]),input:not([x-blackberry-focusable=false]),select:not([x-blackberry-focusable=false]),button:not([x-blackberry-focusable=false]),[x-blackberry-focusable=true]',
+    querySelector : 'textarea:not([x-blackberry-focusable=false]),a:not([x-blackberry-focusable=false]),input:not([x-blackberry-focusable=false]), select:not([x-blackberry-focusable=false]), iframe:not([x-blackberry-focusable=false]), button:not([x-blackberry-focusable=false]), [x-blackberry-focusable=true]',
 
     DOWN : 3,
     UP : 2,
@@ -1059,7 +1059,26 @@ navigationController = {
      * populate the list of elements and their absolute bounding rects
      */
     getFocusableElements : function() {
-        var items = document.body.querySelectorAll(navigationController.querySelector)
+        var items = [],
+            i, j,
+            iframes = document.getElementsByTagName("iframe"),
+            iframeFocusables,
+            focusables = document.body.querySelectorAll(navigationController.querySelector);
+        
+        for(i = 0; i < focusables.length; i++) {
+            items.push(focusables[i]);
+        }
+        
+        for(i = 0; i < iframes.length; i++) {
+            //Make sure the iframe has loaded content before we add it to the navigation map
+            if(iframes[i].contentDocument.body !== null) {
+                iframeFocusables = iframes[i].contentDocument.body.querySelectorAll(navigationController.querySelector);
+                for(j = 0; j < iframeFocusables.length; j++) {
+                    items.push(iframeFocusables[j]);
+                }
+            }
+        }
+        
         var length = items.length;
         // Determine bounding rects and populate list
         var boundingRects = [];
@@ -1084,10 +1103,6 @@ navigationController = {
                         navigationController.currentFocused = navigationController.focusableNodes[i];
                         element = navigationController.currentFocused.element;
                         if (navigationController.isScrollableElement(element)) {
-                            // this is to workaround the issue where input is selected on the first time
-                            if (element.tagName == 'INPUT') {
-                                element.value = element.value;
-                            }
                             navigationController.lastCaretPosition = element.selectionStart;
                         }
                     }
@@ -1544,5 +1559,5 @@ bbNav = {
     }
 }
 
-addEventListener("DOMContentLoaded", bbNav.init, false);
+addEventListener("load", bbNav.init, false);
 }());
