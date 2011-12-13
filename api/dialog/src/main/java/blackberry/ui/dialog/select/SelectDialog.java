@@ -115,11 +115,11 @@ public class SelectDialog extends PopupScreen implements FieldChangeListener, IW
     public void fieldChanged( Field field, int arg1 ) {
         for( int index = 0; index < _listItems.length; index++ ) {
             if( _listItems[ index ].isSelected() ) {
-                _response.addElement(new Integer(index));
+                _response.addElement( new Integer( index ) );
             }
         }
 
-        close(true);
+        close( true );
     }
 
     private void updateCurrentSelection( char keyChar ) {

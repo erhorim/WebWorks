@@ -1103,6 +1103,10 @@ navigationController = {
                         navigationController.currentFocused = navigationController.focusableNodes[i];
                         element = navigationController.currentFocused.element;
                         if (navigationController.isScrollableElement(element)) {
+                            // this is to workaround the issue where input is selected on the first time
+                            if (element.tagName == 'INPUT') {
+                                element.value = element.value;
+                            }
                             navigationController.lastCaretPosition = element.selectionStart;
                         }
                     }
