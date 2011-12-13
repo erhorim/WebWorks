@@ -1533,33 +1533,34 @@ navigationController = {
 
 bbNav = {
     init : function() {
-
-        var data = {
-            'direction' : 3,
-            'delta' : 1,
-            'zoomScale' : 1,
-            'virtualHeight' : screen.height,
-            'virtualWidth' : screen.width,
-            'verticalScroll' : 0,
-            'horizontalScroll' : 0,
-            'height' : screen.height,
-            'width' : screen.width
-        };
-        
-        blackberry.focus.onScroll = navigationController.onScroll;
-        blackberry.focus.onTrackpadDown = navigationController.onTrackpadDown;
-        blackberry.focus.onTrackpadUp = navigationController.onTrackpadUp;
-        blackberry.focus.getDirection = navigationController.getDirection;
-        blackberry.focus.getFocus = navigationController.getFocus;
-        blackberry.focus.getPriorFocus = navigationController.getPriorFocus;
-        blackberry.focus.setFocus = navigationController.setFocus;
-        blackberry.focus.focusOut = navigationController.focusOut;
-        
-        navigationController.initialize(data);
-        
-        navigationController.handleSelect = blackberry.ui.dialog.selectAsync;
-        navigationController.handleInputDateTime = blackberry.ui.dialog.dateTimeAsync;
-        navigationController.handleInputColor = blackberry.ui.dialog.colorPickerAsync;
+		if (window.top === window.self) {
+			var data = {
+				'direction' : 3,
+				'delta' : 1,
+				'zoomScale' : 1,
+				'virtualHeight' : screen.height,
+				'virtualWidth' : screen.width,
+				'verticalScroll' : 0,
+				'horizontalScroll' : 0,
+				'height' : screen.height,
+				'width' : screen.width
+			};
+			
+			blackberry.focus.onScroll = navigationController.onScroll;
+			blackberry.focus.onTrackpadDown = navigationController.onTrackpadDown;
+			blackberry.focus.onTrackpadUp = navigationController.onTrackpadUp;
+			blackberry.focus.getDirection = navigationController.getDirection;
+			blackberry.focus.getFocus = navigationController.getFocus;
+			blackberry.focus.getPriorFocus = navigationController.getPriorFocus;
+			blackberry.focus.setFocus = navigationController.setFocus;
+			blackberry.focus.focusOut = navigationController.focusOut;
+			
+			navigationController.initialize(data);
+			
+			navigationController.handleSelect = blackberry.ui.dialog.selectAsync;
+			navigationController.handleInputDateTime = blackberry.ui.dialog.dateTimeAsync;
+			navigationController.handleInputColor = blackberry.ui.dialog.colorPickerAsync;
+		}
     }
 }
 
