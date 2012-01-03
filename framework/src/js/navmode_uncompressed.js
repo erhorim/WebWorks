@@ -1053,7 +1053,13 @@ navigationController = {
             focusables = document.body.querySelectorAll(navigationController.querySelector);
         
         for(i = 0; i < focusables.length; i++) {
-            items.push(focusables[i]);
+        	if (focusables[i].tagName === "SELECT") {
+        		if (!focusables[i].disabled) {
+        			items.push(focusables[i]);
+        		}
+        	} else {
+        		items.push(focusables[i]);
+        	}
         }
         
         for(i = 0; i < iframes.length; i++) {
