@@ -13,14 +13,14 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package blackberry.web.widget38b3474aefb2e23c25d514c62f378package.bf;
+package blackberry.web.widget.bf;
 
 import net.rim.device.api.browser.field2.BrowserField;
 import net.rim.device.api.browser.field2.BrowserFieldConfig;
 import net.rim.device.api.ui.Screen;
 import net.rim.device.api.ui.TouchEvent;
 import net.rim.device.api.ui.container.VerticalFieldManager;
-import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.bf.navigationcontroller.NavigationController;
+import blackberry.web.widget.bf.navigationcontroller.NavigationController;
 
 /**
  * 
