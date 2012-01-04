@@ -13,13 +13,14 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package blackberry.web.widget.bf;
+package blackberry.web.widget38b3474aefb2e23c25d514c62f378package.bf;
 
 import net.rim.device.api.browser.field2.BrowserField;
+import net.rim.device.api.browser.field2.BrowserFieldConfig;
 import net.rim.device.api.ui.Screen;
 import net.rim.device.api.ui.TouchEvent;
 import net.rim.device.api.ui.container.VerticalFieldManager;
-import blackberry.web.widget.bf.navigationcontroller.NavigationController;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.bf.navigationcontroller.NavigationController;
 
 /**
  * 
@@ -264,24 +265,28 @@ public class WidgetFieldManager extends VerticalFieldManager {
 	* Deselects the currently focused node of navigation mode on 
 	* Touch Down event.  Does not consume the event.
 	*/
-    protected boolean touchEvent( TouchEvent message ){
-    	super.touchEvent( message );    	
-    
-    	// Check for the Touch down event
-        if( message.getEvent() == TouchEvent.DOWN ){
-        	
-        	// Check if navigation mode is turned on 
-        	if( getBrowserFieldScreen().getAppNavigationMode() ){
-        		NavigationController navControl = 
-        			getBrowserFieldScreen().getNavigationController();
-        		// Deselect currently focused node
-        		if( navControl != null ){
-        			navControl.deselectFocusedNode();
-        		}
-        	}
-        }    	
-		return false;
-    }    
+    protected boolean touchEvent( TouchEvent message ) {
+        super.touchEvent( message );
+
+        BrowserFieldConfig bfConfig = getBrowserFieldScreen().getBrowserConfig();
+
+        // Check for the Touch down event
+        if( message.getEvent() == TouchEvent.DOWN ) {
+
+            // Check if navigation mode is turned on
+            if( getBrowserFieldScreen().getAppNavigationMode() ) {
+                NavigationController navControl = getBrowserFieldScreen().getNavigationController();
+                bfConfig.setProperty( BrowserFieldConfig.NAVIGATION_MODE, BrowserFieldConfig.NAVIGATION_MODE_NONE );
+                // Deselect currently focused node
+                if( navControl != null ) {
+                    navControl.deselectFocusedNode();
+                }
+            } else {
+                bfConfig.setProperty( BrowserFieldConfig.NAVIGATION_MODE, BrowserFieldConfig.NAVIGATION_MODE_NONE );
+            }
+        }
+        return false;
+    }  
         
 //    /**
 //     * Get the iframe parent of the specified node.

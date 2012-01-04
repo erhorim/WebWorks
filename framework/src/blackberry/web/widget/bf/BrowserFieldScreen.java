@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blackberry.web.widget.bf;
+package blackberry.web.widget38b3474aefb2e23c25d514c62f378package.bf;
 
 import java.util.Enumeration;
 
@@ -32,17 +32,17 @@ import net.rim.device.api.ui.container.VerticalFieldManager;
 import net.rim.device.api.ui.decor.Background;
 import net.rim.device.api.ui.decor.BackgroundFactory;
 import net.rim.device.api.web.WidgetExtension;
-import blackberry.web.widget.Widget;
-import blackberry.web.widget.WidgetScreen;
-import blackberry.web.widget.bf.navigationcontroller.NavigationController;
-import blackberry.web.widget.bf.navigationcontroller.NavigationExtension;
-import blackberry.web.widget.caching.CacheManager;
-import blackberry.web.widget.caching.WidgetCacheNamespace;
-import blackberry.web.widget.device.DeviceInfo;
-import blackberry.web.widget.html5.GearsHTML5Extension;
-import blackberry.web.widget.impl.WidgetConfigImpl;
-import blackberry.web.widget.loadingScreen.PageManager;
-import blackberry.web.widget.util.WidgetUtil;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.Widget;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.WidgetScreen;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.bf.navigationcontroller.NavigationController;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.bf.navigationcontroller.NavigationExtension;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.caching.CacheManager;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.caching.WidgetCacheNamespace;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.device.DeviceInfo;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.html5.GearsHTML5Extension;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.impl.WidgetConfigImpl;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.loadingScreen.PageManager;
+import blackberry.web.widget38b3474aefb2e23c25d514c62f378package.util.WidgetUtil;
 
 public final class BrowserFieldScreen extends WidgetScreen {
 
@@ -235,6 +235,15 @@ public final class BrowserFieldScreen extends WidgetScreen {
         if( DeviceInfo.isBlackBerry5() ) {
             _HTML5ToGearsExtension = new GearsHTML5Extension();
         }
+    }
+
+    /**
+     * <description> Obtain the means to configure a BrowserField instance.
+     * 
+     * @return <description>
+     */
+    public BrowserFieldConfig getBrowserConfig() {
+        return _bfConfig;
     }
 
     /**
