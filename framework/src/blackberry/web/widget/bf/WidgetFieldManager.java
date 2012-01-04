@@ -276,14 +276,14 @@ public class WidgetFieldManager extends VerticalFieldManager {
             // Check if navigation mode is turned on
             if( getBrowserFieldScreen().getAppNavigationMode() ) {
                 NavigationController navControl = getBrowserFieldScreen().getNavigationController();
-                bfConfig.setProperty( BrowserFieldConfig.NAVIGATION_MODE, BrowserFieldConfig.NAVIGATION_MODE_NONE );
                 // Deselect currently focused node
                 if( navControl != null ) {
                     navControl.deselectFocusedNode();
                 }
-            } else {
-                bfConfig.setProperty( BrowserFieldConfig.NAVIGATION_MODE, BrowserFieldConfig.NAVIGATION_MODE_NONE );
             }
+        } 
+        if ( getBrowserFieldScreen().getAppNavigationMode() ) {
+            bfConfig.setProperty( BrowserFieldConfig.NAVIGATION_MODE, BrowserFieldConfig.NAVIGATION_MODE_NONE );            
         }
         return false;
     }  
